@@ -38,6 +38,21 @@ $(function(){
 
 //***********************************************
 //
+// get random number beteen min and max
+//
+// @min int
+// @max int
+//
+//***********************************************
+    var getRandomRange = function(min,max){
+        if(typeof min == "undefined" || typeof max == "undefined"){
+            return 0;
+        }
+        return Math.floor(Math.random() * (max - min + 1) + min);
+    }
+
+//***********************************************
+//
 // sort array
 //
 // @arr arr or hash
