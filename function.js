@@ -35,4 +35,36 @@ $(function(){
             return Math.ceil(random);
         }
     }
+
+//***********************************************
+//
+// sort array
+//
+// @arr arr or hash
+// @key sortkey
+// @orderby "asc" or "desc"
+//
+//***********************************************
+    var sortArr = function(arr,key,orderby){
+        if(typeof arr == "undefined" || typeof key == "undefined" || typeof orderby == "undefined"){
+            return arr;
+        }
+        if(orderby != "asc" && orderby != "desc"){
+            return arr;
+        }
+        if(orderby == "asc"){
+            return arr.sort((a,b) => {
+                if (Number(a[key]) < Number(b[key])) return -1;
+                if (Number(a[key]) > Number(b[key])) return 1;
+                return 0;
+            });
+        }
+        if(orderby == "desc"){
+            return arr.sort((a,b) => {
+                if (Number(a[key]) > Number(b[key])) return -1;
+                if (Number(a[key]) < Number(b[key])) return 1;
+                return 0;
+            });
+        }
+    }
 });
