@@ -83,3 +83,34 @@ $(function(){
         }
     }
 });
+
+//***********************************************
+//
+// get height
+//
+// @obj obj height_object
+// @inout string "in" or "out"
+// @percentage int percentage
+//
+//***********************************************
+var getHeight = function(obj,inout,percentage){
+    if($(obj).length == 0){
+        return 0;
+    }
+    
+    var height = 0;
+    if(typeof inout == "undefined" || inout === null){
+        height = $(obj).height(); 
+    }
+    if(inout == "inner"){
+        height = $(obj).innerHeight(); 
+    }
+    if(inout == "outer"){
+        height = $(obj).outerHeight(); 
+    }
+    if(height > 0 && typeof percentage != "undefined" && $.isNumeric(Math.ceil(percentage))){
+        height = height * (percentage / 100); 
+    }
+
+    return height;
+}
