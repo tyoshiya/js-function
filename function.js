@@ -114,3 +114,20 @@ var getHeight = function(obj,inout,percentage){
 
     return height;
 }
+
+//***********************************************
+//
+// get key arr
+//
+// @hash hash hash
+//
+//***********************************************
+var getKeys = function(hash){
+    var keys = [];
+    for(key in hash){
+        keys.push(key);
+    }
+
+    console.log(keys);
+    return keys;
+}
