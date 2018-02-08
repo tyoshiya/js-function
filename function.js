@@ -131,3 +131,24 @@ var getKeys = function(hash){
     console.log(keys);
     return keys;
 }
+
+//***********************************************
+//
+// get lastkey in hash
+//
+// @hash hash hash
+//
+//***********************************************
+var getLastKeyInHash = function(hash){
+    var i = 1,
+        len = Object.keys(hash).length
+        lastkey = "";
+
+    $.each(hash,function(key,val){
+        if(i == len){
+            lastkey = key;
+        }
+        i++;
+    });
+    return lastkey;
+}
