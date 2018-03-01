@@ -208,3 +208,27 @@ var getNow = function(format,date){
 
     return now;
 }
+
+//***********************************************
+//
+// JSONのなかに特定のキーが特定の値のデータがあるか
+//
+// @param json json
+// @param key string 走査するキー
+// @param value string 走査する値
+//
+//***********************************************
+var isExistsInJson = function(json,key,value){
+    var exists = false;
+    if(typeof json != "undefined" && typeof key != "undefined" && typeof value != "undefined"){
+        for(var row of json){
+            if(typeof row[key] != "undefined"){
+                if(row[key] == value){
+                    exists = true;
+                    break;
+                }
+            }
+        }
+    }
+    return exists;
+}
