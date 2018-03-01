@@ -261,3 +261,75 @@ var getFirstDataInJson = function(json,key,value){
     }
     return first_data;
 }
+
+//***********************************************
+//
+// 要素のpaddingの値を取得する
+// directionがundefinedなら、連想が配列で返す
+// directionがundefinedじゃないなら数値で返す
+//
+// @param slector string セレクタ
+// @param direction string top or left or bottom or right
+//
+//***********************************************
+var getPadding = function(selector,direction){
+    var padding = {
+        top    : 0,
+        bottom : 0,
+        left   : 0,
+        right  : 0
+    };
+ 
+    if ($(selector).length > 0) {
+        $.each($(selector), function() {
+            padding = {
+                top    : Number($(this).css('padding-top').replace('px', '')),
+                bottom : Number($(this).css('padding-bottom').replace('px', '')),
+                left   : Number($(this).css('padding-left').replace('px', '')),
+                right  : Number($(this).css('padding-right').replace('px', ''))
+            };
+        });
+    }
+ 
+    if(typeof direction != "undefined"){
+        return padding[direction];
+    }else{
+        return padding;
+    }
+}
+
+//***********************************************
+//
+// 要素のmarginの値を取得する
+// directionがundefinedなら、連想が配列で返す
+// directionがundefinedじゃないなら数値で返す
+//
+// @param slector string セレクタ
+// @param direction string top or left or bottom or right
+//
+//***********************************************
+var getMargin = function(selector,direction){
+    var margin = {
+        top    : 0,
+        bottom : 0,
+        left   : 0,
+        right  : 0
+    };
+ 
+    if ($(selector).length > 0) {
+        $.each($(selector), function() {
+            margin = {
+                top    : Number($(this).css('margin-top').replace('px', '')),
+                bottom : Number($(this).css('margin-bottom').replace('px', '')),
+                left   : Number($(this).css('margin-left').replace('px', '')),
+                right  : Number($(this).css('margin-right').replace('px', ''))
+            };
+        });
+    }
+ 
+    if(typeof direction != "undefined"){
+        return margin[direction];
+    }else{
+        return margin;
+    }
+}
