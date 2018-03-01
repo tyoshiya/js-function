@@ -232,3 +232,32 @@ var isExistsInJson = function(json,key,value){
     }
     return exists;
 }
+
+//***********************************************
+//
+// JSONの中で特定のキーが特定の値の最初のデータを取得
+// keyとvalueがundefinedの場合はJSONの最初のデータを返す
+//
+// @param json json
+// @param key string 走査するキー
+// @param value string 走査する値
+//
+//***********************************************
+var getFirstDataInJson = function(json,key,value){
+    var first_data;
+    if(typeof json != "undefined"){
+        if(typeof key != "undefined" || typeof value != "undefined"){
+            for(var row of json){
+                if(typeof row[key] != "undefined"){
+                    if(row[key] == value){
+                        first_data = row;
+                        break;
+                    }
+                }
+            }
+        }else{
+            first_data = json[0]; 
+        }
+    }
+    return first_data;
+}
