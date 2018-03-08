@@ -349,3 +349,15 @@ var getQueryString = function(){
 
     return arg;
 }
+
+//***********************************************
+//
+// 指定した文字で囲む
+//
+//***********************************************
+var surround = function(val,str){
+    if(typeof str != "undefined"){
+        val = str+val+str;
+    }
+    return val;
+}
