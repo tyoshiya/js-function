@@ -4,8 +4,8 @@ $(function(){
 // 配列の一倍最初のキーを返す
 //
 //***********************************************
-var getFirstKey = function(arr_or_hash){
-    for (var key in arr_or_hash) {
+let getFirstKey = function(arr_or_hash){
+    for (let key in arr_or_hash) {
         return key;
     }
     return null;
@@ -16,8 +16,8 @@ var getFirstKey = function(arr_or_hash){
 // 配列の一番最後のキーを取得
 //
 //***********************************************
-var getLastKey = function(arr_or_hash){
-    var i = 1,
+let getLastKey = function(arr_or_hash){
+    let i = 1,
         len = Object.keys(arr_or_hash).length
         lastkey = "";
 
@@ -38,11 +38,11 @@ var getLastKey = function(arr_or_hash){
 // @decimal_digit 小数点以下桁数
 //
 //***********************************************
-    var getRandom = function(digit,decimal_digit){
+    let getRandom = function(digit,decimal_digit){
         if(typeof digit == "undefined"){
             return 0;
         }
-        var random = Math.random();
+        let random = Math.random();
         random *= Math.pow(10,digit);
         if(typeof decimal_digit != "undefined"){
             random *= Math.pow(10,decimal_digit);
@@ -61,7 +61,7 @@ var getLastKey = function(arr_or_hash){
 // @max int 最大値
 //
 //***********************************************
-    var getRandomRange = function(min,max){
+    let getRandomRange = function(min,max){
         if(typeof min == "undefined" || typeof max == "undefined"){
             return 0;
         }
@@ -77,7 +77,7 @@ var getLastKey = function(arr_or_hash){
 // @orderby "asc" or "desc"
 //
 //***********************************************
-    var sortarr_or_hash = function(arr_or_hash,key,orderby){
+    let sortarr_or_hash = function(arr_or_hash,key,orderby){
         if(typeof arr_or_hash == "undefined" || typeof key == "undefined" || typeof orderby == "undefined"){
             return arr_or_hash;
         }
@@ -110,12 +110,12 @@ var getLastKey = function(arr_or_hash){
 // @percentage int percentage
 //
 //***********************************************
-var getHeight = function(obj,inout,percentage){
+let getHeight = function(obj,inout,percentage){
     if($(obj).length == 0){
         return 0;
     }
     
-    var height = 0;
+    let height = 0;
     if(typeof inout == "undefined" || inout === null){
         height = $(obj).height(); 
     }
@@ -139,8 +139,8 @@ var getHeight = function(obj,inout,percentage){
 // @hash hash hash
 //
 //***********************************************
-var getKeys = function(arr_or_hash){
-    var keys = [];
+let getKeys = function(arr_or_hash){
+    let keys = [];
     for(key in arr_or_hash){
         keys.push(key);
     }
@@ -158,23 +158,23 @@ var getKeys = function(arr_or_hash){
 //  @default 本日の日付
 //
 //***********************************************
-var getNow = function(format,date){
+let getNow = function(format,date){
     if(typeof format == "undefined"){
         format = "Y-m-d";
     }
-    var split_format = [];
-    var format_len = format.length;
+    let split_format = [];
+    let format_len = format.length;
     for(i = 0; i < format_len; i++){
         split_format.push(format.slice(i,(i + 1))); 
     }
 
-    var new_date;
+    let new_date;
     if(typeof date == "undefined"){
         new_date = new Date(); 
     }else{
         new_date = new Date(date); 
     }
-    var now = "";
+    let now = "";
     split_format.forEach(function(val){
         switch (val) {
             case "Y":
@@ -218,10 +218,10 @@ var getNow = function(format,date){
 // @param value string 走査する値
 //
 //***********************************************
-var isExistsInJson = function(json,key,value){
-    var exists = false;
+let isExistsInJson = function(json,key,value){
+    let exists = false;
     if(typeof json != "undefined" && typeof key != "undefined" && typeof value != "undefined"){
-        for(var row of json){
+        for(let row of json){
             if(typeof row[key] != "undefined"){
                 if(row[key] == value){
                     exists = true;
@@ -243,11 +243,11 @@ var isExistsInJson = function(json,key,value){
 // @param value string 走査する値
 //
 //***********************************************
-var getFirstDataInJson = function(json,key,value){
-    var first_data;
+let getFirstDataInJson = function(json,key,value){
+    let first_data;
     if(typeof json != "undefined"){
         if(typeof key != "undefined" || typeof value != "undefined"){
-            for(var row of json){
+            for(let row of json){
                 if(typeof row[key] != "undefined"){
                     if(row[key] == value){
                         first_data = row;
@@ -272,8 +272,8 @@ var getFirstDataInJson = function(json,key,value){
 // @param direction string top or left or bottom or right
 //
 //***********************************************
-var getPadding = function(selector,direction){
-    var padding = {
+let getPadding = function(selector,direction){
+    let padding = {
         top    : 0,
         bottom : 0,
         left   : 0,
@@ -308,8 +308,8 @@ var getPadding = function(selector,direction){
 // @param direction string top or left or bottom or right
 //
 //***********************************************
-var getMargin = function(selector,direction){
-    var margin = {
+let getMargin = function(selector,direction){
+    let margin = {
         top    : 0,
         bottom : 0,
         left   : 0,
@@ -339,11 +339,11 @@ var getMargin = function(selector,direction){
 // クエリストリング取得
 //
 //***********************************************
-var getQueryString = function(){
-    var arg = new Object;
-    var pair=location.search.substring(1).split('&');
-    for(var i=0;pair[i];i++) {
-        var kv = pair[i].split('=');
+let getQueryString = function(){
+    let arg = new Object;
+    let pair=location.search.substring(1).split('&');
+    for(let i=0;pair[i];i++) {
+        let kv = pair[i].split('=');
         arg[kv[0]]=kv[1];
     }
 
@@ -355,9 +355,45 @@ var getQueryString = function(){
 // 指定した文字で囲む
 //
 //***********************************************
-var surround = function(val,str){
+let surround = function(val,str){
     if(typeof str != "undefined"){
         val = str+val+str;
     }
     return val;
+}
+
+//***********************************************
+//
+// 要素のborder-widthの値を取得する
+// directionがundefinedなら、連想が配列で返す
+// directionがundefinedじゃないなら数値で返す
+//
+// @param slector string セレクタ
+// @param direction string top or left or bottom or right
+//
+//***********************************************
+let getBorderWidth = function(selector,direction){
+    let border_width = {
+        top    : 0,
+        bottom : 0,
+        left   : 0,
+        right  : 0
+    };
+ 
+    if ($(selector).length > 0) {
+        $.each($(selector), function() {
+            border_width = {
+                top    : Number($(this).css('border-top-width').replace('px', '')),
+                bottom : Number($(this).css('border-bottom-width').replace('px', '')),
+                left   : Number($(this).css('border-left-width').replace('px', '')),
+                right  : Number($(this).css('border-right-width').replace('px', ''))
+            };
+        });
+    }
+ 
+    if(typeof direction != "undefined"){
+        return border_width[direction];
+    }else{
+        return border_width;
+    }
 }
